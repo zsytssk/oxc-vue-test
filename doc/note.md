@@ -3,11 +3,53 @@
 ## 迁移 ems
 
 - @ques 依赖中有依赖的文件需要怎么处理?
+
   - 有没有办法分析某个文件的依赖
   - 在开始的时候, 就去一个个的遍历 文件, 获取所有的依赖关系, 然后再一个个的文件去处理
 
+- 如果只是以文件为单位的, 就会把这个文件的所有依赖有 import 都 import
+  - 如果是 copyFile 需要所有依赖关系
+  - 如果只是更新内容, 只需要那部分内容的依赖关系 -> [深入]
+
 ```ts
 const itemMap = await getFileImportsMap(file, tpmPathAlias);
+```
+
+```ts
+export async function getFileImportsMap(
+  filePath: string,
+  aliasMap?: Record<string, string>,
+  recursive = false,
+  importsMap = {} as Record<string, Record<string, CodeItemInfo>>
+) {
+  const imports = await getImports(filePath); // { modulePath: [importName] }
+  const localAddFile = [] as string[];
+  for (const [modulePath, names] of Object.entries(imports)) {
+    // 转成绝对路径
+    let absPath = modulePath;
+    if (aliasMap) {
+      absPath = resolveAliasPath(modulePath, aliasMap);
+    }
+    absPath = (await getRelPath(filePath, absPath))!;
+    if (!absPath || importsMap[filePath]) {
+      continue;
+    }
+
+    const item = await getSourceNamesPositions(names, absPath);
+    importsMap[filePath] = item;
+    localAddFile.push(filePath);
+  }
+
+  if (!recursive) {
+    return importsMap;
+  }
+
+  for (const filePath of localAddFile) {
+    await getFileImportsMap(filePath, aliasMap, recursive, importsMap);
+  }
+
+  return importsMap;
+}
 ```
 
 - @ques 如何对比文件 -> ?

@@ -1,7 +1,7 @@
 import path from "path";
 import { getSubDirs } from "./ls/asyncUtil";
 import { walk } from "./ls/walk";
-import { applyChange, diffFileContent, getFileImportsMap } from "./parseUtils";
+import { applyChange, checkFileDiff, getFileImportsMap } from "./parseUtils";
 import { isInner, isOutside } from "./utils";
 import { CodeItemInfo } from "./type";
 
@@ -34,7 +34,7 @@ async function main() {
     const absPath = path.join(tpmViewDir, item);
     const file_list = await walk(absPath);
     for (const file of file_list) {
-      const itemMap = await getFileImportsMap(file, tpmPathAlias, true);
+      const itemMap = await getFileImportsMap(file, tpmPathAlias);
       for (const [key, value] of Object.entries(itemMap)) {
         if (!allImportsMap[key]) {
           allImportsMap[key] = value;
@@ -56,14 +56,13 @@ async function main() {
     }
   }
 
+  console.log(allImportsMap);
+
   // 对比文件, 看要更新的内容
   for (const filePath in allImportsMap) {
     const relPath = path.relative(tpmPath.pluginPath, filePath);
     const targetPath = path.resolve(emsPath.pluginPath, relPath);
-    const diffsInfo = await diffFileContent(
-      targetPath,
-      allImportsMap[filePath]
-    );
+    const diffsInfo = await checkFileDiff(targetPath, allImportsMap[filePath]);
     if (Object.keys(diffsInfo.diffsMap).length || diffsInfo.copyFile) {
       await applyChange(filePath, targetPath, diffsInfo);
     }
@@ -88,7 +87,7 @@ async function checkFileDeps(filePath: string) {
   for (const filePath in itemMap) {
     const relPath = path.relative(tpmPath.pluginPath, filePath);
     const targetPath = path.resolve(emsPath.pluginPath, relPath);
-    const diffsInfo = await diffFileContent(targetPath, itemMap[filePath]);
+    const diffsInfo = await checkFileDiff(targetPath, itemMap[filePath]);
     if (Object.keys(diffsInfo.diffsMap).length || diffsInfo.copyFile) {
       await applyChange(filePath, targetPath, diffsInfo);
     }

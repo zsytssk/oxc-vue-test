@@ -104,11 +104,12 @@ export async function getSourceNamesPositions(
 
 export async function getFileImportsMap(
   filePath: string,
-  aliasMap?: Record<string, string>,
-  recursive = false,
-  importsMap = {} as Record<string, Record<string, CodeItemInfo>>
+  aliasMap?: Record<string, string>
 ) {
   const imports = await getImports(filePath); // { modulePath: [importName] }
+
+  // 获取每个 import 的源码
+  const importsMap: Record<string, Record<string, CodeItemInfo>> = {};
 
   for (const [modulePath, names] of Object.entries(imports)) {
     // 转成绝对路径
@@ -124,26 +125,10 @@ export async function getFileImportsMap(
     importsMap[absPath] = await getSourceNamesPositions(names, absPath);
   }
 
-  if (recursive) {
-    for (const filePath of Object.keys(importsMap)) {
-      const itemMap = await getFileImportsMap(filePath, aliasMap, recursive);
-      for (const [key, value] of Object.entries(itemMap)) {
-        if (!importsMap[key]) {
-          importsMap[key] = value;
-        } else {
-          importsMap[key] = {
-            ...importsMap[key],
-            ...value,
-          };
-        }
-      }
-    }
-  }
-
   return importsMap;
 }
 
-export async function diffFileContent(
+export async function checkFileDiff(
   targetFile: string,
   sourceContentMap: Record<string, CodeItemInfo>
 ) {
