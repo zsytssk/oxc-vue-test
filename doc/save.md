@@ -1,8 +1,5 @@
 ## 2025-10-09 10:26:43
 
-@vue/compiler-sfc
-@babel/parser
-
 - 匹配要覆盖的文件夹
 
 ```ts
@@ -23,3 +20,8 @@ async function main() {
 
 await main();
 ```
+
+## save
+
+@vue/compiler-sfc
+@babel/parser

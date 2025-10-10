@@ -29,22 +29,18 @@ const topLevelLocalIdentifiers = new Set();
 // 第一次遍历：收集导入和顶层定义
 traverse(ast, {
   ImportDeclaration(path) {
-    const modulePath = path.node.source.value;
+    const source = path.node.source.value;
     path.node.specifiers.forEach((specifier) => {
-      let importedName = (specifier as any)?.imported?.name;
       if (specifier.type === "ImportDefaultSpecifier") {
-        importedName = "default";
+        // 默认导入：import React from 'react'
+        importedIdentifiers.add(specifier.local.name);
+      } else if (specifier.type === "ImportSpecifier") {
+        // 命名导入：import { util1 } from './utils'
+        importedIdentifiers.add(specifier.local.name);
       } else if (specifier.type === "ImportNamespaceSpecifier") {
-        importedName = "*";
+        // 命名空间导入：import * as lodash from 'lodash'
+        importedIdentifiers.add(specifier.local.name);
       }
-      importedIdentifiers.add({
-        name: specifier.local.name,
-        originalName: importedName,
-        position: [specifier.start, specifier.end],
-        filePath: modulePath,
-        originType: specifier.type,
-        type: "import",
-      });
     });
   },
 
@@ -54,14 +50,10 @@ traverse(ast, {
     path.node.declarations.forEach((declaration) => {
       if (declaration.id.type === "Identifier") {
         const name = declaration.id.name;
-        console.log(`test:>VariableDeclaration`, name);
-        topLevelLocalIdentifiers.add({
-          name,
-          position: [declaration.start, declaration.end],
-          filePath: "",
-          originType: declaration.type,
-          type: "local",
-        });
+        // 如果不是导入的，就是本地定义的
+        if (!importedIdentifiers.has(name)) {
+          topLevelLocalIdentifiers.add(name);
+        }
       }
     });
   },
@@ -69,7 +61,6 @@ traverse(ast, {
   FunctionDeclaration(path) {
     if (!path.parentPath.isProgram()) return; // 只处理顶层函数声明
 
-    console;
     const name = path.node.id?.name;
     if (name && !importedIdentifiers.has(name)) {
       topLevelLocalIdentifiers.add(name);
@@ -90,32 +81,38 @@ traverse(ast, {
       unknowns: new Set(), // 无法确定的
     };
 
-    path.traverse({
-      Identifier(innerPath) {
-        const { name } = innerPath.node;
+    traverse(ast, {
+      FunctionDeclaration(path) {
+        const functionName = path.node.id?.name || "<anonymous>";
 
-        // 检查标识符的绑定信息
-        const binding = innerPath.scope.getBinding(name);
+        path.traverse({
+          Identifier(innerPath) {
+            const { name } = innerPath.node;
 
-        // 如果没有绑定，或者绑定在当前函数作用域之外，则认为是外部依赖
-        if (!binding || binding.scope !== path.scope) {
-          // 确保是引用的标识符，而不是声明
-          if (
-            innerPath.isReferencedIdentifier() &&
-            !innerPath.parentPath.isMemberExpression({
-              object: innerPath.node,
-            })
-          ) {
-            // 分类依赖
-            if (importedIdentifiers.has(name)) {
-              dependencies.imports.add(name);
-            } else if (topLevelLocalIdentifiers.has(name)) {
-              dependencies.locals.add(name);
-            } else {
-              dependencies.unknowns.add(name);
+            // 检查标识符的绑定信息
+            const binding = innerPath.scope.getBinding(name);
+
+            // 如果没有绑定，或者绑定在当前函数作用域之外，则认为是外部依赖
+            if (!binding || binding.scope !== path.scope) {
+              // 确保是引用的标识符，而不是声明
+              if (
+                innerPath.isReferencedIdentifier() &&
+                !innerPath.parentPath.isMemberExpression({
+                  object: innerPath.node,
+                })
+              ) {
+                // 分类依赖
+                if (importedIdentifiers.has(name)) {
+                  dependencies.imports.add(name);
+                } else if (topLevelLocalIdentifiers.has(name)) {
+                  dependencies.locals.add(name);
+                } else {
+                  dependencies.unknowns.add(name);
+                }
+              }
             }
-          }
-        }
+          },
+        });
       },
     });
 

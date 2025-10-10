@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import * as path from "path";
-
 export async function readFile(file_path: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     fs.readFile(file_path, "utf8", (err, file_str: string) => {
@@ -38,9 +37,9 @@ export async function getSubDirs(dirPath: string) {
   return result;
 }
 
-export function exists(path: string) {
+export async function exists(filePath: string) {
   return new Promise((resolve, reject) => {
-    fs.access(path, (err) => {
+    fs.access(filePath, (err) => {
       resolve(err ? false : true);
     });
   });
