@@ -1,4 +1,4 @@
-import { getFileVariables } from "./parseUtils.save";
+import { getFileVariables } from "../src/parseUtils.save";
 
 const file =
   "/home/zsy/Documents/zsy/job/tpm/web/src/plugin/tpm/view/device/hooks/useCreateOrderByDevice.ts";
