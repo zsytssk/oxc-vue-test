@@ -5,6 +5,7 @@ import { parse as babelParse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import { CodeItemInfo, DiffsInfo } from "./type";
 import { cpFile } from "./ls/cpFile";
+import { write } from "./ls/write";
 export async function parseVueScript(filePath: string) {
   const content = await readFile(filePath);
   const { descriptor } = parseVue(content);
@@ -129,26 +130,38 @@ export async function getFileImportsMap(
 }
 
 export async function checkFileDiff(
+  sourceFile: string,
   targetFile: string,
-  sourceContentMap: Record<string, CodeItemInfo>
+  sourceIdnMap: Record<string, CodeItemInfo>
 ) {
   if (!(await exists(targetFile))) {
-    return { diffsMap: sourceContentMap, copyFile: true };
+    await cpFile(sourceFile, targetFile);
+    return;
   }
-  const diffsMapInfo = { copyFile: false, diffsMap: {} } as DiffsInfo;
-  const findNames = Object.keys(sourceContentMap);
-  const targetContentMap = await getSourceNamesPositions(findNames, targetFile);
+  let targetCon = await readFile(targetFile);
+  const findNames = Object.keys(sourceIdnMap);
+  const targetVarMap = await getSourceNamesPositions(findNames, targetFile);
+  findNames.sort((a, b) => {
+    const posStartA = targetVarMap[a]?.pos[0] || 0;
+    const posStartB = targetVarMap[b]?.pos[0] || 0;
+    return posStartB - posStartA;
+  });
   for (const name of findNames) {
-    if (!targetContentMap[name]) {
-      diffsMapInfo.diffsMap[name] = sourceContentMap[name];
-    } else if (targetContentMap[name].len !== sourceContentMap[name].len) {
-      diffsMapInfo.diffsMap[name] = sourceContentMap[name];
-    } else if (targetContentMap[name].code !== sourceContentMap[name].code) {
-      diffsMapInfo.diffsMap[name] = sourceContentMap[name];
+    if (!targetVarMap[name]) {
+      // 新增
+      targetCon += `\n${sourceIdnMap[name].code}`;
+    } else if (
+      targetVarMap[name].len !== sourceIdnMap[name].len ||
+      targetVarMap[name].code !== sourceIdnMap[name].code
+    ) {
+      // 替换
+      targetCon =
+        targetCon.slice(0, targetVarMap[name].pos[0]) +
+        sourceIdnMap[name].code +
+        targetCon.slice(targetVarMap[name].pos[1]);
     }
   }
-
-  return diffsMapInfo;
+  await write(targetFile, targetCon);
 }
 
 export async function applyChange(
@@ -160,4 +173,5 @@ export async function applyChange(
     await cpFile(sourceFile, targetFile);
     return;
   }
+  // 从后向前修改目标文件内容: 替换 + 新增
 }

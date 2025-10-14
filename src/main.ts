@@ -56,42 +56,16 @@ async function main() {
     }
   }
 
-  console.log(allImportsMap);
-
   // 对比文件, 看要更新的内容
   for (const filePath in allImportsMap) {
     const relPath = path.relative(tpmPath.pluginPath, filePath);
     const targetPath = path.resolve(emsPath.pluginPath, relPath);
-    const diffsInfo = await checkFileDiff(targetPath, allImportsMap[filePath]);
-    if (Object.keys(diffsInfo.diffsMap).length || diffsInfo.copyFile) {
-      await applyChange(filePath, targetPath, diffsInfo);
-    }
+    await checkFileDiff(filePath, targetPath, allImportsMap[filePath]);
   }
 
   // console.log(allImportsMap);
 }
 
-async function checkFileDeps(filePath: string) {
-  const tpmViewDir = path.resolve(tpmPath.pluginPath, tpmPath.view);
-
-  const itemMap = await getFileImportsMap(filePath, tpmPathAlias);
-  for (const path in itemMap) {
-    if (isOutside(tpmPath.pluginPath, path)) {
-      delete itemMap[path];
-    } else if (isInner(tpmViewDir, path)) {
-      delete itemMap[path];
-    }
-  }
-
-  // 对比文件, 看要更新的内容
-  for (const filePath in itemMap) {
-    const relPath = path.relative(tpmPath.pluginPath, filePath);
-    const targetPath = path.resolve(emsPath.pluginPath, relPath);
-    const diffsInfo = await checkFileDiff(targetPath, itemMap[filePath]);
-    if (Object.keys(diffsInfo.diffsMap).length || diffsInfo.copyFile) {
-      await applyChange(filePath, targetPath, diffsInfo);
-    }
-  }
-}
+async function checkFileDeps(filePath: string) {}
 
 await main();
