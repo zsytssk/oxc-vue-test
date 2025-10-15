@@ -7,6 +7,7 @@ export type CodeItem = {
   filePath: string;
   originType: string;
   type: CodeType;
+  code?: string;
 };
 
 export type CodeItemInfo = {

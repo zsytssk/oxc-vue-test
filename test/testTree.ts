@@ -23,15 +23,22 @@ export function MyComponent() {
 }
 
 export const a = axios.get;
-let b;
-export class A {constructor() {} abc() {return a;}}
+let b = function () {
+  console.log('Clicked');
+  fetchData();
+};
+export class A {constructor() {} abc() {
+  const test1 = 1
+  return a;
+}}
 class B {}
+const c = { a, b , d: () => {
+  const test = 1
+  return test;
+}}
 `;
 
-const ast = parse(code, {
-  sourceType: "module",
-  plugins: ["typescript", "jsx"],
-});
+const ast = parse(code, { sourceType: "module" });
 
 function getNodeName(node: any) {
   // 根据不同类型获取“名字”
@@ -64,9 +71,43 @@ function getNodeName(node: any) {
   }
 }
 
+function buildTree(path: NodePath<any>, topPath = [] as string[]) {
+  const node = path.node;
+  const name = getNodeName(node);
+  const curPath = [...topPath, name].filter(Boolean);
+  const tree: any = {
+    type: node.type,
+    name: name, // 这里加上名字
+    path: curPath.join("."),
+    children: [] as any[],
+  };
+  if (path.parentPath?.isDeclaration() && curPath.length) {
+    console.log("Declaration:", curPath.join("."));
+  }
+
+  for (const key in node) {
+    if (key === "loc" || key === "start" || key === "end") {
+      continue;
+    }
+    const childPath = path.get(key);
+    if (Array.isArray(childPath)) {
+      childPath.forEach((c: NodePath<any>) => {
+        if (typeof c?.node?.type === "string") {
+          tree.children.push(buildTree(c, curPath));
+        }
+      });
+    } else if (typeof childPath?.node?.type === "string") {
+      tree.children.push(buildTree(childPath, curPath));
+    }
+  }
+
+  return tree;
+}
+
 traverse(ast, {
-  Declaration(path) {
-    const name = getNodeName(path.node);
-    console.log(`Declaration`, path.isVariableDeclaration(), name);
+  Program(path) {
+    const tree = buildTree(path);
+    Bun.write("./test/test.json", JSON.stringify(tree, null, 2));
+    path.stop();
   },
 });

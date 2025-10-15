@@ -1,5 +1,32 @@
 分析 code 和他的依赖, 这挺有意思的, 然后对比看看有没有修改
 
+## 2025-10-14 16:30:46
+
+- @ques 分析代码的依赖
+
+- @ques 列举所有的申明
+
+  - 最好是能找到每一个 node 的 path
+
+- @ques 列举所有的引用
+
+- @ques 多变量声明要怎么处理？`const {a, b} = {a: 1, b: 2}`
+
+  - 情况太多了 bindings 要考虑一个个不同的节点
+  - `Declaration` 获取名字太复杂了
+
+- @ques 如何获取 binding 对应的路径`Param.MyComponent.fetchData`
+
+```
+const a = {}
+```
+
+### end
+
+- @ques 最顶级的变量和 function
+
+- @ques 最顶级的声明 -> 变量 + fn + import
+
 ## 迁移 ems
 
 - @ques 依赖的类型 -> 文件 | 代码块

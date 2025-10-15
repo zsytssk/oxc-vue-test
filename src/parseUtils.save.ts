@@ -4,6 +4,18 @@ import { parseFileAst } from "./parseUtils";
 import { CodeItem } from "./type";
 import { getRelPath } from "./utils";
 
+function isClosest(binding: any, functionPath: any): boolean {
+  let currentScope = binding.scope;
+
+  while (currentScope) {
+    if (currentScope === functionPath.scope) {
+      return true; // 在当前函数作用域内
+    }
+    currentScope = currentScope.parent;
+  }
+
+  return false;
+}
 export function getFunExternDeps(code: string) {
   const externalDeps = new Map();
   const ast = babelParse(code, {
@@ -19,19 +31,12 @@ export function getFunExternDeps(code: string) {
       path.traverse({
         Identifier(innerPath) {
           const { name } = innerPath.node;
-
           // 检查标识符的绑定信息
           const binding = innerPath.scope.getBinding(name);
-
           // 如果没有绑定，或者绑定在当前函数作用域之外，则认为是外部依赖
-          if (!binding || binding.scope !== path.scope) {
+          if (!binding || !isClosest(binding, path)) {
             // 确保是引用的标识符，而不是声明
-            if (
-              innerPath.isReferencedIdentifier() &&
-              !innerPath.parentPath.isMemberExpression({
-                object: innerPath.node,
-              })
-            ) {
+            if (innerPath.isReferencedIdentifier()) {
               usedIdentifiers.add(name);
             }
           }
@@ -41,6 +46,8 @@ export function getFunExternDeps(code: string) {
       externalDeps.set(functionName, Array.from(usedIdentifiers));
     },
   });
+
+  return externalDeps;
 }
 
 export async function getFileVariables(filePath: string) {
