@@ -23,22 +23,18 @@ export function MyComponent() {
 }
 
 export const a = axios.get;
-let b = function () {
-  console.log('Clicked');
-  fetchData();
-};
+let b;
 export class A {constructor() {} abc() {
-  const test1 = 1
+  const test = 1;
   return a;
 }}
 class B {}
-const c = { a, b , d: () => {
-  const test = 1
-  return test;
-}}
 `;
 
-const ast = parse(code, { sourceType: "module" });
+const ast = parse(code, {
+  sourceType: "module",
+  plugins: ["typescript", "jsx"],
+});
 
 function getNodeName(node: any) {
   // 根据不同类型获取“名字”
@@ -71,43 +67,42 @@ function getNodeName(node: any) {
   }
 }
 
-function buildTree(path: NodePath<any>, topPath = [] as string[]) {
-  const node = path.node;
-  const name = getNodeName(node) || node.type;
-  const curPath = [...topPath, name].filter(Boolean);
-  const tree: any = {
-    type: node.type,
-    name: name, // 这里加上名字
-    path: curPath.join("."),
-    children: [] as any[],
-  };
-  if (path.parentPath?.isDeclaration() && curPath.length) {
-    console.log("Declaration:", curPath.join("."));
-  }
-
-  for (const key in node) {
-    if (key === "loc" || key === "start" || key === "end") {
-      continue;
-    }
-    const childPath = path.get(key);
-    if (Array.isArray(childPath)) {
-      childPath.forEach((c: NodePath<any>) => {
-        if (typeof c?.node?.type === "string") {
-          tree.children.push(buildTree(c, curPath));
-        }
-      });
-    } else if (typeof childPath?.node?.type === "string") {
-      tree.children.push(buildTree(childPath, curPath));
-    }
-  }
-
-  return tree;
-}
-
 traverse(ast, {
-  Program(path) {
-    const tree = buildTree(path);
-    Bun.write("./test/test.json", JSON.stringify(tree, null, 2));
-    path.stop();
+  enter(path) {
+    const name = getNodeName(path.node);
+    if (path.parentPath?.isDeclaration() && name) {
+      const parentName = getNodeName(path.parentPath!.node);
+      if (parentName === name) {
+        return;
+      }
+      const parentPath = getCompletePath(path);
+      const str = code.slice(parentPath.node.start!, parentPath.node.end!);
+      console.log(name, getPathTree(path));
+    }
   },
 });
+
+function getPathTree(path: NodePath<any>): string[] {
+  let currentPath = path;
+  const pathArr = [];
+  while (currentPath) {
+    const curName = getNodeName(currentPath.node);
+    if (curName) {
+      pathArr.push(getNodeName(currentPath.node));
+    }
+    currentPath = currentPath.parentPath!;
+  }
+
+  return pathArr.reverse();
+}
+
+function getCompletePath(path: NodePath<any>) {
+  if (
+    path.parentPath?.isExportNamedDeclaration() ||
+    path.parentPath?.isVariableDeclaration() ||
+    path.parentPath?.isImportDeclaration()
+  ) {
+    return getCompletePath(path.parentPath);
+  }
+  return path;
+}

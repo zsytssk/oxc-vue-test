@@ -4,16 +4,11 @@
 
 - @ques 分析代码的依赖
 
-- @ques 列举所有的申明
+  - @ques 列举所有的引用
 
-  - 最好是能找到每一个 node 的 path
+- @ques 多变量声明要怎么处理？`const {a, ...other} = {a: 1, b: 2}`
 
-- @ques 列举所有的引用
-
-- @ques 多变量声明要怎么处理？`const {a, b} = {a: 1, b: 2}`
-
-  - 情况太多了 bindings 要考虑一个个不同的节点
-  - `Declaration` 获取名字太复杂了
+### end
 
 - @ques 如何获取 binding 对应的路径`Param.MyComponent.fetchData`
 
@@ -21,7 +16,12 @@
 const a = {}
 ```
 
-### end
+- 情况太多了 bindings 要考虑一个个不同的节点
+- `Declaration` 获取名字太复杂了
+
+- @ques 列举所有的申明
+
+  - 最好是能找到每一个 node 的 path
 
 - @ques 最顶级的变量和 function
 

@@ -1,694 +1,77 @@
 {
   "type": "Program",
-  "path": "",
+  "name": "Program",
+  "path": "Program",
   "children": [
     {
-      "type": "ImportDeclaration",
-      "path": "",
-      "children": [
-        {
-          "type": "ImportSpecifier",
-          "name": "util1_1",
-          "path": "util1_1",
-          "children": [
-            {
-              "type": "Identifier",
-              "name": "util1",
-              "path": "util1_1.util1",
-              "children": []
-            },
-            {
-              "type": "Identifier",
-              "name": "util1_1",
-              "path": "util1_1.util1_1",
-              "children": []
-            }
-          ]
-        },
-        {
-          "type": "ImportSpecifier",
-          "name": "util2",
-          "path": "util2",
-          "children": [
-            {
-              "type": "Identifier",
-              "name": "util2",
-              "path": "util2.util2",
-              "children": []
-            },
-            {
-              "type": "Identifier",
-              "name": "util2",
-              "path": "util2.util2",
-              "children": []
-            }
-          ]
-        },
-        {
-          "type": "StringLiteral",
-          "path": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "type": "ImportDeclaration",
-      "path": "",
-      "children": [
-        {
-          "type": "ImportSpecifier",
-          "name": "useState",
-          "path": "useState",
-          "children": [
-            {
-              "type": "Identifier",
-              "name": "useState",
-              "path": "useState.useState",
-              "children": []
-            },
-            {
-              "type": "Identifier",
-              "name": "useState",
-              "path": "useState.useState",
-              "children": []
-            }
-          ]
-        },
-        {
-          "type": "StringLiteral",
-          "path": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "type": "ImportDeclaration",
-      "path": "",
-      "children": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "path": "",
-          "children": [
-            {
-              "type": "Identifier",
-              "name": "axios",
-              "path": "axios",
-              "children": []
-            }
-          ]
-        },
-        {
-          "type": "StringLiteral",
-          "path": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "type": "ExportNamedDeclaration",
-      "path": "",
-      "children": [
-        {
-          "type": "FunctionDeclaration",
-          "name": "MyComponent",
-          "path": "MyComponent",
-          "children": [
-            {
-              "type": "Identifier",
-              "name": "MyComponent",
-              "path": "MyComponent.MyComponent",
-              "children": []
-            },
-            {
-              "type": "BlockStatement",
-              "path": "MyComponent",
-              "children": [
-                {
-                  "type": "VariableDeclaration",
-                  "path": "MyComponent",
-                  "children": [
-                    {
-                      "type": "VariableDeclarator",
-                      "path": "MyComponent",
-                      "children": [
-                        {
-                          "type": "ArrayPattern",
-                          "path": "MyComponent",
-                          "children": [
-                            {
-                              "type": "Identifier",
-                              "name": "data",
-                              "path": "MyComponent.data",
-                              "children": []
-                            },
-                            {
-                              "type": "Identifier",
-                              "name": "setData",
-                              "path": "MyComponent.setData",
-                              "children": []
-                            }
-                          ]
-                        },
-                        {
-                          "type": "CallExpression",
-                          "path": "MyComponent",
-                          "children": [
-                            {
-                              "type": "Identifier",
-                              "name": "useState",
-                              "path": "MyComponent.useState",
-                              "children": []
-                            },
-                            {
-                              "type": "NullLiteral",
-                              "path": "MyComponent",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "VariableDeclaration",
-                  "path": "MyComponent",
-                  "children": [
-                    {
-                      "type": "VariableDeclarator",
-                      "name": "fetchData",
-                      "path": "MyComponent.fetchData",
-                      "children": [
-                        {
-                          "type": "Identifier",
-                          "name": "fetchData",
-                          "path": "MyComponent.fetchData.fetchData",
-                          "children": []
-                        },
-                        {
-                          "type": "ArrowFunctionExpression",
-                          "path": "MyComponent.fetchData",
-                          "children": [
-                            {
-                              "type": "BlockStatement",
-                              "path": "MyComponent.fetchData",
-                              "children": [
-                                {
-                                  "type": "VariableDeclaration",
-                                  "path": "MyComponent.fetchData",
-                                  "children": [
-                                    {
-                                      "type": "VariableDeclarator",
-                                      "name": "result",
-                                      "path": "MyComponent.fetchData.result",
-                                      "children": [
-                                        {
-                                          "type": "Identifier",
-                                          "name": "result",
-                                          "path": "MyComponent.fetchData.result.result",
-                                          "children": []
-                                        },
-                                        {
-                                          "type": "AwaitExpression",
-                                          "path": "MyComponent.fetchData.result",
-                                          "children": [
-                                            {
-                                              "type": "CallExpression",
-                                              "path": "MyComponent.fetchData.result",
-                                              "children": [
-                                                {
-                                                  "type": "MemberExpression",
-                                                  "path": "MyComponent.fetchData.result",
-                                                  "children": [
-                                                    {
-                                                      "type": "Identifier",
-                                                      "name": "axios",
-                                                      "path": "MyComponent.fetchData.result.axios",
-                                                      "children": []
-                                                    },
-                                                    {
-                                                      "type": "Identifier",
-                                                      "name": "get",
-                                                      "path": "MyComponent.fetchData.result.get",
-                                                      "children": []
-                                                    }
-                                                  ]
-                                                },
-                                                {
-                                                  "type": "StringLiteral",
-                                                  "path": "MyComponent.fetchData.result",
-                                                  "children": []
-                                                }
-                                              ]
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "ExpressionStatement",
-                                  "path": "MyComponent.fetchData",
-                                  "children": [
-                                    {
-                                      "type": "CallExpression",
-                                      "path": "MyComponent.fetchData",
-                                      "children": [
-                                        {
-                                          "type": "Identifier",
-                                          "name": "setData",
-                                          "path": "MyComponent.fetchData.setData",
-                                          "children": []
-                                        },
-                                        {
-                                          "type": "MemberExpression",
-                                          "path": "MyComponent.fetchData",
-                                          "children": [
-                                            {
-                                              "type": "Identifier",
-                                              "name": "result",
-                                              "path": "MyComponent.fetchData.result",
-                                              "children": []
-                                            },
-                                            {
-                                              "type": "Identifier",
-                                              "name": "data",
-                                              "path": "MyComponent.fetchData.data",
-                                              "children": []
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "VariableDeclaration",
-                  "path": "MyComponent",
-                  "children": [
-                    {
-                      "type": "VariableDeclarator",
-                      "name": "handleClick",
-                      "path": "MyComponent.handleClick",
-                      "children": [
-                        {
-                          "type": "Identifier",
-                          "name": "handleClick",
-                          "path": "MyComponent.handleClick.handleClick",
-                          "children": []
-                        },
-                        {
-                          "type": "ArrowFunctionExpression",
-                          "path": "MyComponent.handleClick",
-                          "children": [
-                            {
-                              "type": "BlockStatement",
-                              "path": "MyComponent.handleClick",
-                              "children": [
-                                {
-                                  "type": "ExpressionStatement",
-                                  "path": "MyComponent.handleClick",
-                                  "children": [
-                                    {
-                                      "type": "CallExpression",
-                                      "path": "MyComponent.handleClick",
-                                      "children": [
-                                        {
-                                          "type": "MemberExpression",
-                                          "path": "MyComponent.handleClick",
-                                          "children": [
-                                            {
-                                              "type": "Identifier",
-                                              "name": "console",
-                                              "path": "MyComponent.handleClick.console",
-                                              "children": []
-                                            },
-                                            {
-                                              "type": "Identifier",
-                                              "name": "log",
-                                              "path": "MyComponent.handleClick.log",
-                                              "children": []
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "StringLiteral",
-                                          "path": "MyComponent.handleClick",
-                                          "children": []
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "ExpressionStatement",
-                                  "path": "MyComponent.handleClick",
-                                  "children": [
-                                    {
-                                      "type": "CallExpression",
-                                      "path": "MyComponent.handleClick",
-                                      "children": [
-                                        {
-                                          "type": "Identifier",
-                                          "name": "fetchData",
-                                          "path": "MyComponent.handleClick.fetchData",
-                                          "children": []
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "ReturnStatement",
-                  "path": "MyComponent",
-                  "children": [
-                    {
-                      "type": "ObjectExpression",
-                      "path": "MyComponent",
-                      "children": [
-                        {
-                          "type": "ObjectProperty",
-                          "name": "handleClick",
-                          "path": "MyComponent.handleClick",
-                          "children": [
-                            {
-                              "type": "Identifier",
-                              "name": "handleClick",
-                              "path": "MyComponent.handleClick.handleClick",
-                              "children": []
-                            },
-                            {
-                              "type": "Identifier",
-                              "name": "handleClick",
-                              "path": "MyComponent.handleClick.handleClick",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "ExportNamedDeclaration",
-      "path": "",
-      "children": [
-        {
-          "type": "VariableDeclaration",
-          "path": "",
-          "children": [
-            {
-              "type": "VariableDeclarator",
-              "name": "a",
-              "path": "a",
-              "children": [
-                {
-                  "type": "Identifier",
-                  "name": "a",
-                  "path": "a.a",
-                  "children": []
-                },
-                {
-                  "type": "MemberExpression",
-                  "path": "a",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "axios",
-                      "path": "a.axios",
-                      "children": []
-                    },
-                    {
-                      "type": "Identifier",
-                      "name": "get",
-                      "path": "a.get",
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "type": "VariableDeclaration",
-      "path": "",
+      "name": "VariableDeclaration",
+      "path": "Program.VariableDeclaration",
       "children": [
         {
           "type": "VariableDeclarator",
-          "name": "b",
-          "path": "b",
+          "name": "VariableDeclarator",
+          "path": "Program.VariableDeclaration.VariableDeclarator",
           "children": [
             {
-              "type": "Identifier",
-              "name": "b",
-              "path": "b.b",
-              "children": []
-            },
-            {
-              "type": "FunctionExpression",
-              "path": "b",
-              "children": [
-                {
-                  "type": "BlockStatement",
-                  "path": "b",
-                  "children": [
-                    {
-                      "type": "ExpressionStatement",
-                      "path": "b",
-                      "children": [
-                        {
-                          "type": "CallExpression",
-                          "path": "b",
-                          "children": [
-                            {
-                              "type": "MemberExpression",
-                              "path": "b",
-                              "children": [
-                                {
-                                  "type": "Identifier",
-                                  "name": "console",
-                                  "path": "b.console",
-                                  "children": []
-                                },
-                                {
-                                  "type": "Identifier",
-                                  "name": "log",
-                                  "path": "b.log",
-                                  "children": []
-                                }
-                              ]
-                            },
-                            {
-                              "type": "StringLiteral",
-                              "path": "b",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "ExpressionStatement",
-                      "path": "b",
-                      "children": [
-                        {
-                          "type": "CallExpression",
-                          "path": "b",
-                          "children": [
-                            {
-                              "type": "Identifier",
-                              "name": "fetchData",
-                              "path": "b.fetchData",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "ExportNamedDeclaration",
-      "path": "",
-      "children": [
-        {
-          "type": "ClassDeclaration",
-          "name": "A",
-          "path": "A",
-          "children": [
-            {
-              "type": "Identifier",
-              "name": "A",
-              "path": "A.A",
-              "children": []
-            },
-            {
-              "type": "ClassBody",
-              "path": "A",
-              "children": [
-                {
-                  "type": "ClassMethod",
-                  "name": "constructor",
-                  "path": "A.constructor",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "constructor",
-                      "path": "A.constructor.constructor",
-                      "children": []
-                    },
-                    {
-                      "type": "BlockStatement",
-                      "path": "A.constructor",
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "type": "ClassMethod",
-                  "name": "abc",
-                  "path": "A.abc",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "abc",
-                      "path": "A.abc.abc",
-                      "children": []
-                    },
-                    {
-                      "type": "BlockStatement",
-                      "path": "A.abc",
-                      "children": [
-                        {
-                          "type": "VariableDeclaration",
-                          "path": "A.abc",
-                          "children": [
-                            {
-                              "type": "VariableDeclarator",
-                              "name": "test1",
-                              "path": "A.abc.test1",
-                              "children": [
-                                {
-                                  "type": "Identifier",
-                                  "name": "test1",
-                                  "path": "A.abc.test1.test1",
-                                  "children": []
-                                },
-                                {
-                                  "type": "NumericLiteral",
-                                  "path": "A.abc.test1",
-                                  "children": []
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "ReturnStatement",
-                          "path": "A.abc",
-                          "children": [
-                            {
-                              "type": "Identifier",
-                              "name": "a",
-                              "path": "A.abc.a",
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "ClassDeclaration",
-      "name": "B",
-      "path": "B",
-      "children": [
-        {
-          "type": "Identifier",
-          "name": "B",
-          "path": "B.B",
-          "children": []
-        },
-        {
-          "type": "ClassBody",
-          "path": "B",
-          "children": []
-        }
-      ]
-    },
-    {
-      "type": "VariableDeclaration",
-      "path": "",
-      "children": [
-        {
-          "type": "VariableDeclarator",
-          "name": "c",
-          "path": "c",
-          "children": [
-            {
-              "type": "Identifier",
-              "name": "c",
-              "path": "c.c",
-              "children": []
-            },
-            {
-              "type": "ObjectExpression",
-              "path": "c",
+              "type": "ObjectPattern",
+              "name": "ObjectPattern",
+              "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern",
               "children": [
                 {
                   "type": "ObjectProperty",
                   "name": "a",
-                  "path": "c.a",
+                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.a",
                   "children": [
                     {
                       "type": "Identifier",
                       "name": "a",
-                      "path": "c.a.a",
+                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.a.a",
                       "children": []
                     },
                     {
                       "type": "Identifier",
                       "name": "a",
-                      "path": "c.a.a",
+                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.a.a",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "RestElement",
+                  "name": "RestElement",
+                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.RestElement",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "other",
+                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.RestElement.other",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ObjectExpression",
+              "name": "ObjectExpression",
+              "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression",
+              "children": [
+                {
+                  "type": "ObjectProperty",
+                  "name": "a",
+                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.a",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "a",
+                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.a.a",
+                      "children": []
+                    },
+                    {
+                      "type": "NumericLiteral",
+                      "name": "NumericLiteral",
+                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.a.NumericLiteral",
                       "children": []
                     }
                   ]
@@ -696,80 +79,19 @@
                 {
                   "type": "ObjectProperty",
                   "name": "b",
-                  "path": "c.b",
+                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.b",
                   "children": [
                     {
                       "type": "Identifier",
                       "name": "b",
-                      "path": "c.b.b",
+                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.b.b",
                       "children": []
                     },
                     {
-                      "type": "Identifier",
-                      "name": "b",
-                      "path": "c.b.b",
+                      "type": "NumericLiteral",
+                      "name": "NumericLiteral",
+                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.b.NumericLiteral",
                       "children": []
-                    }
-                  ]
-                },
-                {
-                  "type": "ObjectProperty",
-                  "name": "d",
-                  "path": "c.d",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "d",
-                      "path": "c.d.d",
-                      "children": []
-                    },
-                    {
-                      "type": "ArrowFunctionExpression",
-                      "path": "c.d",
-                      "children": [
-                        {
-                          "type": "BlockStatement",
-                          "path": "c.d",
-                          "children": [
-                            {
-                              "type": "VariableDeclaration",
-                              "path": "c.d",
-                              "children": [
-                                {
-                                  "type": "VariableDeclarator",
-                                  "name": "test",
-                                  "path": "c.d.test",
-                                  "children": [
-                                    {
-                                      "type": "Identifier",
-                                      "name": "test",
-                                      "path": "c.d.test.test",
-                                      "children": []
-                                    },
-                                    {
-                                      "type": "NumericLiteral",
-                                      "path": "c.d.test",
-                                      "children": []
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "ReturnStatement",
-                              "path": "c.d",
-                              "children": [
-                                {
-                                  "type": "Identifier",
-                                  "name": "test",
-                                  "path": "c.d.test",
-                                  "children": []
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
                     }
                   ]
                 }
