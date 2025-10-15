@@ -67,6 +67,7 @@ function getNodeName(node: any) {
   }
 }
 
+const map = {} as Record<string, any>;
 traverse(ast, {
   enter(path) {
     const name = getNodeName(path.node);
@@ -77,10 +78,15 @@ traverse(ast, {
       }
       const parentPath = getCompletePath(path);
       const str = code.slice(parentPath.node.start!, parentPath.node.end!);
+      map[getPathTree(path).join(".")] = {
+        code: str,
+      };
       console.log(name, getPathTree(path));
     }
   },
 });
+
+Bun.write("./test/test.json", JSON.stringify(map, null, 2));
 
 function getPathTree(path: NodePath<any>): string[] {
   let currentPath = path;

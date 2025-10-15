@@ -1,105 +1,35 @@
 {
-  "type": "Program",
-  "name": "Program",
-  "path": "Program",
-  "children": [
-    {
-      "type": "VariableDeclaration",
-      "name": "VariableDeclaration",
-      "path": "Program.VariableDeclaration",
-      "children": [
-        {
-          "type": "VariableDeclarator",
-          "name": "VariableDeclarator",
-          "path": "Program.VariableDeclaration.VariableDeclarator",
-          "children": [
-            {
-              "type": "ObjectPattern",
-              "name": "ObjectPattern",
-              "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern",
-              "children": [
-                {
-                  "type": "ObjectProperty",
-                  "name": "a",
-                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.a",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "a",
-                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.a.a",
-                      "children": []
-                    },
-                    {
-                      "type": "Identifier",
-                      "name": "a",
-                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.a.a",
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "type": "RestElement",
-                  "name": "RestElement",
-                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.RestElement",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "other",
-                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectPattern.RestElement.other",
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "ObjectExpression",
-              "name": "ObjectExpression",
-              "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression",
-              "children": [
-                {
-                  "type": "ObjectProperty",
-                  "name": "a",
-                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.a",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "a",
-                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.a.a",
-                      "children": []
-                    },
-                    {
-                      "type": "NumericLiteral",
-                      "name": "NumericLiteral",
-                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.a.NumericLiteral",
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "type": "ObjectProperty",
-                  "name": "b",
-                  "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.b",
-                  "children": [
-                    {
-                      "type": "Identifier",
-                      "name": "b",
-                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.b.b",
-                      "children": []
-                    },
-                    {
-                      "type": "NumericLiteral",
-                      "name": "NumericLiteral",
-                      "path": "Program.VariableDeclaration.VariableDeclarator.ObjectExpression.b.NumericLiteral",
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  "util1_1": {
+    "code": "import { util1 as util1_1, util2 } from './utils'"
+  },
+  "util2": {
+    "code": "import { util1 as util1_1, util2 } from './utils'"
+  },
+  "useState": {
+    "code": "import { useState } from 'react';"
+  },
+  "MyComponent": {
+    "code": "export function MyComponent() {\n  const [data, setData] = useState(null);\n\n  const fetchData = async () => {\n    const result = await axios.get('/api/data');\n    setData(result.data);\n  };\n\n  const handleClick = () => {\n    console.log('Clicked');\n    fetchData();\n  };\n\n  return { handleClick };\n}"
+  },
+  "MyComponent.fetchData": {
+    "code": "const fetchData = async () => {\n    const result = await axios.get('/api/data');\n    setData(result.data);\n  };"
+  },
+  "MyComponent.fetchData.result": {
+    "code": "const result = await axios.get('/api/data');"
+  },
+  "MyComponent.handleClick": {
+    "code": "const handleClick = () => {\n    console.log('Clicked');\n    fetchData();\n  };"
+  },
+  "a": {
+    "code": "export const a = axios.get;"
+  },
+  "b": {
+    "code": "let b;"
+  },
+  "A": {
+    "code": "export class A {constructor() {} abc() {\n  const test = 1;\n  return a;\n}}"
+  },
+  "A.abc.test": {
+    "code": "const test = 1;"
+  }
 }
