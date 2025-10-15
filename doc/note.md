@@ -2,13 +2,17 @@
 
 ## 2025-10-14 16:30:46
 
+- @ques 多变量声明要怎么处理？`const {a, ...other} = {a: 1, b: 2}`
+
+- @ques 类型依赖
+
+- @ques `getAllBindings()`
+
+### end
+
 - @ques 分析代码的依赖
 
   - @ques 列举所有的引用
-
-- @ques 多变量声明要怎么处理？`const {a, ...other} = {a: 1, b: 2}`
-
-### end
 
 - @ques 如何获取 binding 对应的路径`Param.MyComponent.fetchData`
 

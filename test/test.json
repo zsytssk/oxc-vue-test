@@ -1,35 +1,847 @@
 {
-  "util1_1": {
-    "code": "import { util1 as util1_1, util2 } from './utils'"
-  },
-  "util2": {
-    "code": "import { util1 as util1_1, util2 } from './utils'"
-  },
-  "useState": {
-    "code": "import { useState } from 'react';"
-  },
-  "MyComponent": {
-    "code": "export function MyComponent() {\n  const [data, setData] = useState(null);\n\n  const fetchData = async () => {\n    const result = await axios.get('/api/data');\n    setData(result.data);\n  };\n\n  const handleClick = () => {\n    console.log('Clicked');\n    fetchData();\n  };\n\n  return { handleClick };\n}"
-  },
-  "MyComponent.fetchData": {
-    "code": "const fetchData = async () => {\n    const result = await axios.get('/api/data');\n    setData(result.data);\n  };"
-  },
-  "MyComponent.fetchData.result": {
-    "code": "const result = await axios.get('/api/data');"
-  },
-  "MyComponent.handleClick": {
-    "code": "const handleClick = () => {\n    console.log('Clicked');\n    fetchData();\n  };"
-  },
-  "a": {
-    "code": "export const a = axios.get;"
-  },
-  "b": {
-    "code": "let b;"
-  },
-  "A": {
-    "code": "export class A {constructor() {} abc() {\n  const test = 1;\n  return a;\n}}"
-  },
-  "A.abc.test": {
-    "code": "const test = 1;"
-  }
+  "type": "Program",
+  "name": "Program",
+  "path": "Program",
+  "children": [
+    {
+      "type": "ImportDeclaration",
+      "name": "ImportDeclaration",
+      "path": "Program.ImportDeclaration",
+      "children": [
+        {
+          "type": "ImportSpecifier",
+          "name": "util1_1",
+          "path": "Program.ImportDeclaration.util1_1",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "util1",
+              "path": "Program.ImportDeclaration.util1_1.util1",
+              "children": []
+            },
+            {
+              "type": "Identifier",
+              "name": "util1_1",
+              "path": "Program.ImportDeclaration.util1_1.util1_1",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "ImportSpecifier",
+          "name": "util2",
+          "path": "Program.ImportDeclaration.util2",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "util2",
+              "path": "Program.ImportDeclaration.util2.util2",
+              "children": []
+            },
+            {
+              "type": "Identifier",
+              "name": "util2",
+              "path": "Program.ImportDeclaration.util2.util2",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "StringLiteral",
+          "name": "StringLiteral",
+          "path": "Program.ImportDeclaration.StringLiteral",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "ImportDeclaration",
+      "name": "ImportDeclaration",
+      "path": "Program.ImportDeclaration",
+      "children": [
+        {
+          "type": "ImportSpecifier",
+          "name": "useState",
+          "path": "Program.ImportDeclaration.useState",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "useState",
+              "path": "Program.ImportDeclaration.useState.useState",
+              "children": []
+            },
+            {
+              "type": "Identifier",
+              "name": "useState",
+              "path": "Program.ImportDeclaration.useState.useState",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "StringLiteral",
+          "name": "StringLiteral",
+          "path": "Program.ImportDeclaration.StringLiteral",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "ImportDeclaration",
+      "name": "ImportDeclaration",
+      "path": "Program.ImportDeclaration",
+      "children": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "name": "ImportDefaultSpecifier",
+          "path": "Program.ImportDeclaration.ImportDefaultSpecifier",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "axios",
+              "path": "Program.ImportDeclaration.ImportDefaultSpecifier.axios",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "StringLiteral",
+          "name": "StringLiteral",
+          "path": "Program.ImportDeclaration.StringLiteral",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "name": "ExportNamedDeclaration",
+      "path": "Program.ExportNamedDeclaration",
+      "children": [
+        {
+          "type": "FunctionDeclaration",
+          "name": "MyComponent",
+          "path": "Program.ExportNamedDeclaration.MyComponent",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "MyComponent",
+              "path": "Program.ExportNamedDeclaration.MyComponent.MyComponent",
+              "children": []
+            },
+            {
+              "type": "BlockStatement",
+              "name": "BlockStatement",
+              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement",
+              "children": [
+                {
+                  "type": "VariableDeclaration",
+                  "name": "VariableDeclaration",
+                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration",
+                  "children": [
+                    {
+                      "type": "VariableDeclarator",
+                      "name": "VariableDeclarator",
+                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.VariableDeclarator",
+                      "children": [
+                        {
+                          "type": "ArrayPattern",
+                          "name": "ArrayPattern",
+                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.VariableDeclarator.ArrayPattern",
+                          "children": [
+                            {
+                              "type": "Identifier",
+                              "name": "data",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.VariableDeclarator.ArrayPattern.data",
+                              "children": []
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "setData",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.VariableDeclarator.ArrayPattern.setData",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "CallExpression",
+                          "name": "CallExpression",
+                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.VariableDeclarator.CallExpression",
+                          "children": [
+                            {
+                              "type": "Identifier",
+                              "name": "useState",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.VariableDeclarator.CallExpression.useState",
+                              "children": []
+                            },
+                            {
+                              "type": "NullLiteral",
+                              "name": "NullLiteral",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.VariableDeclarator.CallExpression.NullLiteral",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "VariableDeclaration",
+                  "name": "VariableDeclaration",
+                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration",
+                  "children": [
+                    {
+                      "type": "VariableDeclarator",
+                      "name": "fetchData",
+                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData",
+                      "children": [
+                        {
+                          "type": "Identifier",
+                          "name": "fetchData",
+                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.fetchData",
+                          "children": []
+                        },
+                        {
+                          "type": "ArrowFunctionExpression",
+                          "name": "ArrowFunctionExpression",
+                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression",
+                          "children": [
+                            {
+                              "type": "BlockStatement",
+                              "name": "BlockStatement",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement",
+                              "children": [
+                                {
+                                  "type": "VariableDeclaration",
+                                  "name": "VariableDeclaration",
+                                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration",
+                                  "children": [
+                                    {
+                                      "type": "VariableDeclarator",
+                                      "name": "result",
+                                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result",
+                                      "children": [
+                                        {
+                                          "type": "Identifier",
+                                          "name": "result",
+                                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result.result",
+                                          "children": []
+                                        },
+                                        {
+                                          "type": "AwaitExpression",
+                                          "name": "AwaitExpression",
+                                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result.AwaitExpression",
+                                          "children": [
+                                            {
+                                              "type": "CallExpression",
+                                              "name": "CallExpression",
+                                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result.AwaitExpression.CallExpression",
+                                              "children": [
+                                                {
+                                                  "type": "MemberExpression",
+                                                  "name": "MemberExpression",
+                                                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result.AwaitExpression.CallExpression.MemberExpression",
+                                                  "children": [
+                                                    {
+                                                      "type": "Identifier",
+                                                      "name": "axios",
+                                                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result.AwaitExpression.CallExpression.MemberExpression.axios",
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "type": "Identifier",
+                                                      "name": "get",
+                                                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result.AwaitExpression.CallExpression.MemberExpression.get",
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "type": "StringLiteral",
+                                                  "name": "StringLiteral",
+                                                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.VariableDeclaration.result.AwaitExpression.CallExpression.StringLiteral",
+                                                  "children": []
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "ExpressionStatement",
+                                  "name": "ExpressionStatement",
+                                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.ExpressionStatement",
+                                  "children": [
+                                    {
+                                      "type": "CallExpression",
+                                      "name": "CallExpression",
+                                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression",
+                                      "children": [
+                                        {
+                                          "type": "Identifier",
+                                          "name": "setData",
+                                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.setData",
+                                          "children": []
+                                        },
+                                        {
+                                          "type": "MemberExpression",
+                                          "name": "MemberExpression",
+                                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression",
+                                          "children": [
+                                            {
+                                              "type": "Identifier",
+                                              "name": "result",
+                                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression.result",
+                                              "children": []
+                                            },
+                                            {
+                                              "type": "Identifier",
+                                              "name": "data",
+                                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.fetchData.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression.data",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "VariableDeclaration",
+                  "name": "VariableDeclaration",
+                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration",
+                  "children": [
+                    {
+                      "type": "VariableDeclarator",
+                      "name": "handleClick",
+                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick",
+                      "children": [
+                        {
+                          "type": "Identifier",
+                          "name": "handleClick",
+                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.handleClick",
+                          "children": []
+                        },
+                        {
+                          "type": "ArrowFunctionExpression",
+                          "name": "ArrowFunctionExpression",
+                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression",
+                          "children": [
+                            {
+                              "type": "BlockStatement",
+                              "name": "BlockStatement",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement",
+                              "children": [
+                                {
+                                  "type": "ExpressionStatement",
+                                  "name": "ExpressionStatement",
+                                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement",
+                                  "children": [
+                                    {
+                                      "type": "CallExpression",
+                                      "name": "CallExpression",
+                                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression",
+                                      "children": [
+                                        {
+                                          "type": "MemberExpression",
+                                          "name": "MemberExpression",
+                                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression",
+                                          "children": [
+                                            {
+                                              "type": "Identifier",
+                                              "name": "console",
+                                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression.console",
+                                              "children": []
+                                            },
+                                            {
+                                              "type": "Identifier",
+                                              "name": "log",
+                                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression.log",
+                                              "children": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "StringLiteral",
+                                          "name": "StringLiteral",
+                                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.StringLiteral",
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "ExpressionStatement",
+                                  "name": "ExpressionStatement",
+                                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement",
+                                  "children": [
+                                    {
+                                      "type": "CallExpression",
+                                      "name": "CallExpression",
+                                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression",
+                                      "children": [
+                                        {
+                                          "type": "Identifier",
+                                          "name": "fetchData",
+                                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.VariableDeclaration.handleClick.ArrowFunctionExpression.BlockStatement.ExpressionStatement.CallExpression.fetchData",
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "ReturnStatement",
+                  "name": "ReturnStatement",
+                  "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.ReturnStatement",
+                  "children": [
+                    {
+                      "type": "ObjectExpression",
+                      "name": "ObjectExpression",
+                      "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.ReturnStatement.ObjectExpression",
+                      "children": [
+                        {
+                          "type": "ObjectProperty",
+                          "name": "handleClick",
+                          "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.ReturnStatement.ObjectExpression.handleClick",
+                          "children": [
+                            {
+                              "type": "Identifier",
+                              "name": "handleClick",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.ReturnStatement.ObjectExpression.handleClick.handleClick",
+                              "children": []
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "handleClick",
+                              "path": "Program.ExportNamedDeclaration.MyComponent.BlockStatement.ReturnStatement.ObjectExpression.handleClick.handleClick",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "name": "ExportNamedDeclaration",
+      "path": "Program.ExportNamedDeclaration",
+      "children": [
+        {
+          "type": "VariableDeclaration",
+          "name": "VariableDeclaration",
+          "path": "Program.ExportNamedDeclaration.VariableDeclaration",
+          "children": [
+            {
+              "type": "VariableDeclarator",
+              "name": "a",
+              "path": "Program.ExportNamedDeclaration.VariableDeclaration.a",
+              "children": [
+                {
+                  "type": "Identifier",
+                  "name": "a",
+                  "path": "Program.ExportNamedDeclaration.VariableDeclaration.a.a",
+                  "children": []
+                },
+                {
+                  "type": "MemberExpression",
+                  "name": "MemberExpression",
+                  "path": "Program.ExportNamedDeclaration.VariableDeclaration.a.MemberExpression",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "axios",
+                      "path": "Program.ExportNamedDeclaration.VariableDeclaration.a.MemberExpression.axios",
+                      "children": []
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "get",
+                      "path": "Program.ExportNamedDeclaration.VariableDeclaration.a.MemberExpression.get",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclaration",
+      "name": "VariableDeclaration",
+      "path": "Program.VariableDeclaration",
+      "children": [
+        {
+          "type": "VariableDeclarator",
+          "name": "b",
+          "path": "Program.VariableDeclaration.b",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "b",
+              "path": "Program.VariableDeclaration.b.b",
+              "children": []
+            },
+            {
+              "type": "FunctionExpression",
+              "name": "FunctionExpression",
+              "path": "Program.VariableDeclaration.b.FunctionExpression",
+              "children": [
+                {
+                  "type": "BlockStatement",
+                  "name": "BlockStatement",
+                  "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement",
+                  "children": [
+                    {
+                      "type": "ExpressionStatement",
+                      "name": "ExpressionStatement",
+                      "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement",
+                      "children": [
+                        {
+                          "type": "CallExpression",
+                          "name": "CallExpression",
+                          "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement.CallExpression",
+                          "children": [
+                            {
+                              "type": "MemberExpression",
+                              "name": "MemberExpression",
+                              "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression",
+                              "children": [
+                                {
+                                  "type": "Identifier",
+                                  "name": "console",
+                                  "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression.console",
+                                  "children": []
+                                },
+                                {
+                                  "type": "Identifier",
+                                  "name": "log",
+                                  "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement.CallExpression.MemberExpression.log",
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "type": "StringLiteral",
+                              "name": "StringLiteral",
+                              "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement.CallExpression.StringLiteral",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "name": "ExpressionStatement",
+                      "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement",
+                      "children": [
+                        {
+                          "type": "CallExpression",
+                          "name": "CallExpression",
+                          "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement.CallExpression",
+                          "children": [
+                            {
+                              "type": "Identifier",
+                              "name": "fetchData",
+                              "path": "Program.VariableDeclaration.b.FunctionExpression.BlockStatement.ExpressionStatement.CallExpression.fetchData",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "name": "ExportNamedDeclaration",
+      "path": "Program.ExportNamedDeclaration",
+      "children": [
+        {
+          "type": "ClassDeclaration",
+          "name": "A",
+          "path": "Program.ExportNamedDeclaration.A",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "A",
+              "path": "Program.ExportNamedDeclaration.A.A",
+              "children": []
+            },
+            {
+              "type": "ClassBody",
+              "name": "ClassBody",
+              "path": "Program.ExportNamedDeclaration.A.ClassBody",
+              "children": [
+                {
+                  "type": "ClassMethod",
+                  "name": "constructor",
+                  "path": "Program.ExportNamedDeclaration.A.ClassBody.constructor",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "constructor",
+                      "path": "Program.ExportNamedDeclaration.A.ClassBody.constructor.constructor",
+                      "children": []
+                    },
+                    {
+                      "type": "BlockStatement",
+                      "name": "BlockStatement",
+                      "path": "Program.ExportNamedDeclaration.A.ClassBody.constructor.BlockStatement",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ClassMethod",
+                  "name": "abc",
+                  "path": "Program.ExportNamedDeclaration.A.ClassBody.abc",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "abc",
+                      "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.abc",
+                      "children": []
+                    },
+                    {
+                      "type": "BlockStatement",
+                      "name": "BlockStatement",
+                      "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.BlockStatement",
+                      "children": [
+                        {
+                          "type": "VariableDeclaration",
+                          "name": "VariableDeclaration",
+                          "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.BlockStatement.VariableDeclaration",
+                          "children": [
+                            {
+                              "type": "VariableDeclarator",
+                              "name": "test1",
+                              "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.BlockStatement.VariableDeclaration.test1",
+                              "children": [
+                                {
+                                  "type": "Identifier",
+                                  "name": "test1",
+                                  "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.BlockStatement.VariableDeclaration.test1.test1",
+                                  "children": []
+                                },
+                                {
+                                  "type": "NumericLiteral",
+                                  "name": "NumericLiteral",
+                                  "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.BlockStatement.VariableDeclaration.test1.NumericLiteral",
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "ReturnStatement",
+                          "name": "ReturnStatement",
+                          "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.BlockStatement.ReturnStatement",
+                          "children": [
+                            {
+                              "type": "Identifier",
+                              "name": "a",
+                              "path": "Program.ExportNamedDeclaration.A.ClassBody.abc.BlockStatement.ReturnStatement.a",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ClassDeclaration",
+      "name": "B",
+      "path": "Program.B",
+      "children": [
+        {
+          "type": "Identifier",
+          "name": "B",
+          "path": "Program.B.B",
+          "children": []
+        },
+        {
+          "type": "ClassBody",
+          "name": "ClassBody",
+          "path": "Program.B.ClassBody",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclaration",
+      "name": "VariableDeclaration",
+      "path": "Program.VariableDeclaration",
+      "children": [
+        {
+          "type": "VariableDeclarator",
+          "name": "c",
+          "path": "Program.VariableDeclaration.c",
+          "children": [
+            {
+              "type": "Identifier",
+              "name": "c",
+              "path": "Program.VariableDeclaration.c.c",
+              "children": []
+            },
+            {
+              "type": "ObjectExpression",
+              "name": "ObjectExpression",
+              "path": "Program.VariableDeclaration.c.ObjectExpression",
+              "children": [
+                {
+                  "type": "ObjectProperty",
+                  "name": "a",
+                  "path": "Program.VariableDeclaration.c.ObjectExpression.a",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "a",
+                      "path": "Program.VariableDeclaration.c.ObjectExpression.a.a",
+                      "children": []
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "a",
+                      "path": "Program.VariableDeclaration.c.ObjectExpression.a.a",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ObjectProperty",
+                  "name": "b",
+                  "path": "Program.VariableDeclaration.c.ObjectExpression.b",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "b",
+                      "path": "Program.VariableDeclaration.c.ObjectExpression.b.b",
+                      "children": []
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "b",
+                      "path": "Program.VariableDeclaration.c.ObjectExpression.b.b",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ObjectProperty",
+                  "name": "d",
+                  "path": "Program.VariableDeclaration.c.ObjectExpression.d",
+                  "children": [
+                    {
+                      "type": "Identifier",
+                      "name": "d",
+                      "path": "Program.VariableDeclaration.c.ObjectExpression.d.d",
+                      "children": []
+                    },
+                    {
+                      "type": "ArrowFunctionExpression",
+                      "name": "ArrowFunctionExpression",
+                      "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression",
+                      "children": [
+                        {
+                          "type": "BlockStatement",
+                          "name": "BlockStatement",
+                          "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression.BlockStatement",
+                          "children": [
+                            {
+                              "type": "VariableDeclaration",
+                              "name": "VariableDeclaration",
+                              "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression.BlockStatement.VariableDeclaration",
+                              "children": [
+                                {
+                                  "type": "VariableDeclarator",
+                                  "name": "test",
+                                  "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression.BlockStatement.VariableDeclaration.test",
+                                  "children": [
+                                    {
+                                      "type": "Identifier",
+                                      "name": "test",
+                                      "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression.BlockStatement.VariableDeclaration.test.test",
+                                      "children": []
+                                    },
+                                    {
+                                      "type": "NumericLiteral",
+                                      "name": "NumericLiteral",
+                                      "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression.BlockStatement.VariableDeclaration.test.NumericLiteral",
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "ReturnStatement",
+                              "name": "ReturnStatement",
+                              "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression.BlockStatement.ReturnStatement",
+                              "children": [
+                                {
+                                  "type": "Identifier",
+                                  "name": "test",
+                                  "path": "Program.VariableDeclaration.c.ObjectExpression.d.ArrowFunctionExpression.BlockStatement.ReturnStatement.test",
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

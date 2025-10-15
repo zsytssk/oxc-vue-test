@@ -18,7 +18,8 @@ traverse(ast, {
   Program(path) {
     path.traverse({
       ReferencedIdentifier(path) {
-        if (!path.scope.hasBinding(path.node.name)) {
+        const binding = path.scope.getBinding(path.node.name);
+        if (!binding) {
           externalRefs.add(path.node.name);
         }
       },
