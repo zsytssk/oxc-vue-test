@@ -10,13 +10,10 @@ export type CodeItem = {
   code?: string;
 };
 
-export type CodeItemInfo = {
-  code?: string;
-  len: number;
-  pos: [number, number];
-};
-
-export type DiffsInfo = {
-  diffsMap: Record<string, CodeItemInfo>;
-  copyFile: boolean;
+export type DiffItem = {
+  diffType: "file" | "code";
+  sourceFile: string;
+  targetFile?: string;
+  codeName?: string;
+  pos?: [number, number];
 };

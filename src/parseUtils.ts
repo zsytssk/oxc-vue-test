@@ -2,8 +2,8 @@ import { getRelPath, isVueFile, resolveAliasPath } from "./utils";
 import { exists, readFile } from "./ls/asyncUtil";
 import { parse as parseVue } from "@vue/compiler-sfc";
 import { parse as babelParse } from "@babel/parser";
-import traverse from "@babel/traverse";
-import { CodeItemInfo, DiffsInfo } from "./type";
+import traverse, { NodePath } from "@babel/traverse";
+import { CodeItem, DiffItem } from "./type";
 import { cpFile } from "./ls/cpFile";
 import { write } from "./ls/write";
 export async function parseVueScript(filePath: string) {
@@ -164,14 +164,89 @@ export async function checkFileDiff(
   await write(targetFile, targetCon);
 }
 
-export async function applyChange(
-  sourceFile: string,
-  targetFile: string,
-  diffsInfo: DiffsInfo
-) {
-  if (diffsInfo.copyFile) {
-    await cpFile(sourceFile, targetFile);
+export async function applyChange(diffItem: DiffItem) {
+  if (diffItem.diffType === "file") {
+    await cpFile(diffItem.sourceFile, diffItem.targetFile);
     return;
   }
   // 从后向前修改目标文件内容: 替换 + 新增
+}
+
+export function getCodeExternDeps(code: string) {
+  const externalRefs = new Set();
+  const ast = babelParse(code, {
+    sourceType: "module",
+    plugins: ["jsx", "typescript"],
+  });
+
+  traverse(ast, {
+    Program(path) {
+      path.traverse({
+        ReferencedIdentifier(path) {
+          const binding = path.scope.getBinding(path.node.name);
+          if (!binding) {
+            externalRefs.add(path.node.name);
+          }
+        },
+      });
+    },
+  });
+}
+
+function getCompletePath(path: NodePath<any>) {
+  if (
+    path.parentPath?.isExportNamedDeclaration() ||
+    path.parentPath?.isVariableDeclaration() ||
+    path.parentPath?.isImportDeclaration()
+  ) {
+    return getCompletePath(path.parentPath);
+  }
+  return path;
+}
+
+export async function getFileTopIdentifies(filePath: string, withCode = false) {
+  const { ast, content } = await parseFileAst(filePath);
+
+  const defined = new Set<CodeItem>();
+
+  traverse(ast, {
+    Program(path) {
+      const bindings = path.scope.bindings;
+      for (const name in bindings) {
+        const item = bindings[name];
+        const itemPath = item.path;
+        const parentPath = getCompletePath(item.path);
+        if (
+          itemPath.isImportSpecifier() ||
+          itemPath.isImportDefaultSpecifier() ||
+          itemPath.isImportNamespaceSpecifier()
+        ) {
+          const node = itemPath.node;
+          const modulePath = parentPath.node.source.value;
+          const originalName = (node as any)?.imported?.name;
+          defined.add({
+            type: "import",
+            originType: itemPath.type,
+            name: name,
+            originalName: originalName,
+            position: [node.start!, node.end!],
+            code: withCode ? content.slice(node.start!, node.end!) : undefined,
+            filePath: modulePath,
+          });
+        } else {
+          const parentNode = parentPath.node;
+          defined.add({
+            type: "local",
+            originType: itemPath.type,
+            name: name,
+            position: [parentNode.start!, parentNode.end!],
+            code: withCode
+              ? content.slice(parentNode.start!, parentNode.end!)
+              : undefined,
+            filePath: "",
+          });
+        }
+      }
+    },
+  });
 }

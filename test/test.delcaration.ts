@@ -2,20 +2,20 @@ import { parse } from "@babel/parser";
 import traverse, { NodePath } from "@babel/traverse";
 
 const code = `
-import { util1 as util1_1, util2 } from './utils'
-import { useState } from 'react';
-import axios from 'axios';
+import { util1 as util1_1, util2 } from "./utils";
+import { useState } from "react";
+import axios from "axios";
 
 export function MyComponent() {
   const [data, setData] = useState(null);
 
   const fetchData = async () => {
-    const result = await axios.get('/api/data');
+    const result = await axios.get("/api/data");
     setData(result.data);
   };
 
   const handleClick = () => {
-    console.log('Clicked');
+    console.log("Clicked");
     fetchData();
   };
 
@@ -24,11 +24,18 @@ export function MyComponent() {
 
 export const a = axios.get;
 let b;
-export class A {constructor() {} abc() {
-  const test = 1;
-  return a;
-}}
+export class A {
+  constructor() {}
+  abc() {
+    const test = 1;
+    return a;
+  }
+}
 class B {}
+type TypeA = {
+  a: string;
+  b: number;
+};
 `;
 
 const ast = parse(code, {
@@ -103,11 +110,7 @@ function getPathTree(path: NodePath<any>): string[] {
 }
 
 function getCompletePath(path: NodePath<any>) {
-  if (
-    path.parentPath?.isExportNamedDeclaration() ||
-    path.parentPath?.isVariableDeclaration() ||
-    path.parentPath?.isImportDeclaration()
-  ) {
+  if (path.parentPath?.isDeclaration()) {
     return getCompletePath(path.parentPath);
   }
   return path;

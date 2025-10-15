@@ -1,9 +1,7 @@
 import path from "path";
 import { getSubDirs } from "./ls/asyncUtil";
 import { walk } from "./ls/walk";
-import { applyChange, checkFileDiff, getFileImportsMap } from "./parseUtils";
-import { isInner, isOutside } from "./utils";
-import { CodeItemInfo } from "./type";
+import { DiffItem } from "./type";
 
 const tpmPath = {
   pluginPath: "/home/zsy/Documents/zsy/job/tpm/web/src/plugin/tpm/",
@@ -24,48 +22,25 @@ async function main() {
   const tpmViews = await getSubDirs(tpmViewDir);
   const emsViewPath = path.resolve(emsPath.pluginPath, emsPath.view);
   const emsViews = await getSubDirs(emsViewPath);
-
   const matchDir = tpmViews.filter((tpmView) => emsViews.includes(tpmView));
-  const allImportsMap = {} as Record<string, Record<string, CodeItemInfo>>;
+
+  const diffList = [] as DiffItem[];
+  const diffMap = new Map<string, DiffItem>();
   for (const item of matchDir) {
     if (item !== "device") {
       continue;
     }
     const absPath = path.join(tpmViewDir, item);
     const file_list = await walk(absPath);
-    for (const file of file_list) {
-      const itemMap = await getFileImportsMap(file, tpmPathAlias);
-      for (const [key, value] of Object.entries(itemMap)) {
-        if (!allImportsMap[key]) {
-          allImportsMap[key] = value;
-        } else {
-          allImportsMap[key] = {
-            ...allImportsMap[key],
-            ...value,
-          };
-        }
-      }
-    }
+    diffList.push(
+      ...file_list.map((item) => ({
+        sourceFile: item,
+        diffType: "file" as const,
+      }))
+    );
   }
 
-  for (const path in allImportsMap) {
-    if (isOutside(tpmPath.pluginPath, path)) {
-      delete allImportsMap[path];
-    } else if (isInner(tpmViewDir, path)) {
-      delete allImportsMap[path];
-    }
-  }
-
-  // 对比文件, 看要更新的内容
-  for (const filePath in allImportsMap) {
-    const relPath = path.relative(tpmPath.pluginPath, filePath);
-    const targetPath = path.resolve(emsPath.pluginPath, relPath);
-    await checkFileDiff(filePath, targetPath, allImportsMap[filePath]);
-  }
-
-  // console.log(allImportsMap);
+  while (diffList.length) {}
 }
-
-async function checkFileDeps(filePath: string) {}
 
 await main();

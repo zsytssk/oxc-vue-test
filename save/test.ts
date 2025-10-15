@@ -19,21 +19,16 @@ export function MyComponent() {
 }
 
 export const a = axios.get;
-let b = function () {
-  console.log("Clicked");
-  fetchData();
-};
+let b;
 export class A {
   constructor() {}
   abc() {
+    const test = 1;
     return a;
   }
 }
 class B {}
-const c = {
-  a,
-  b,
-  d: () => {
-    return a;
-  },
+type TypeA = {
+  a: string;
+  b: number;
 };

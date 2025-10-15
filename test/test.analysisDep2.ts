@@ -2,7 +2,12 @@ import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 
 const code = `
-function foo(x) {
+function foo1(x) {
+  foo2()
+  console.log(a, b, c, util1_1, React, lodash, unknown);
+  const d = e + f;
+}
+function foo2(b) {
   console.log(a, b, c, util1_1, React, lodash, unknown);
   const d = e + f;
 }

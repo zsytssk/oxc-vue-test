@@ -2,13 +2,18 @@
 
 ## 2025-10-14 16:30:46
 
+- 每一个依赖 都有为一个一个 id
+
+  - 文件 -> `文件路径` | code -> `文件:name`
+
 - @ques 多变量声明要怎么处理？`const {a, ...other} = {a: 1, b: 2}`
 
-- @ques 类型依赖
-
-- @ques `getAllBindings()`
+- @ques 代码块的修改逻辑 -> tmp -> ems
 
 ### end
+
+- @ques `getAllBindings()`
+- @ques 类型 -> 依赖 + 定义
 
 - @ques 分析代码的依赖
 
