@@ -1,13 +1,10 @@
-export type CodeType = "import" | "local";
-
 export type CodeItem = {
+  type: "import" | "local" | "file";
   name: string;
-  originalName?: string;
-  position: [number, number];
   filePath: string;
-  originType: string;
-  type: CodeType;
-  code?: string;
+  originType?: string;
+  position?: [number, number];
+  originalName?: string;
 };
 
 export type DiffItem = {
@@ -15,5 +12,5 @@ export type DiffItem = {
   sourceFile: string;
   targetFile?: string;
   codeName?: string;
-  pos?: [number, number];
+  position?: [number, number];
 };

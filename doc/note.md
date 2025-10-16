@@ -2,16 +2,52 @@
 
 ## 2025-10-14 16:30:46
 
+- @todo 测试获取文件的 import 依赖
+  - 文件
+  - code
+  - 使用测试文件，看是否正确
+
+---
+
+- @ques 也许需要一些专门的 test 文件
+
+- @ques 如果没有找到对应的 code 块怎么办 -> 不做处理
+
+- @ques import 的转换关系
+
+  - `import 信息(文件地址，名称)` -> 寻找依赖关系
+  - codeItem -> 转换成 diffItem
+
+- @ques 怎么定位 import-default 的依赖
+
+  - `export default a`
+  - `export default function`
+
+```ts
+import { createPinia } from "pinia";
+const store = createPinia();
+export { store };
+```
+
+- @ques `default` 如果对面是 vue 文件直接复制文件
+
+- @ques `getAllTopIdentifies2` -> export | sourceItem -> diffItem
+
 - 每一个依赖 都有为一个一个 id
 
+  - 文件关联还是 ID 关联 -> 分析依赖关系 用文件最好 -> 应用修改时也是用文件最好
   - 文件 -> `文件路径` | code -> `文件:name`
 
 - @ques 多变量声明要怎么处理？`const {a, ...other} = {a: 1, b: 2}`
+
+  - 暂不处理
 
 - @ques 代码块的修改逻辑 -> tmp -> ems
 
 ### end
 
+- @ques getAllExports
+- `import * as` 怎么处理
 - @ques `getAllBindings()`
 - @ques 类型 -> 依赖 + 定义
 

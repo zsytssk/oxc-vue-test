@@ -1,93 +1,79 @@
 [
   {
-    "type": "import",
-    "originType": "ImportSpecifier",
     "name": "util1_1",
+    "type": "import",
     "originalName": "util1",
+    "filePath": "./utils",
+    "originType": "ExportNamedDeclaration",
     "position": [
-      10,
-      26
-    ],
-    "code": "util1 as util1_1",
-    "filePath": "./utils"
+      114,
+      157
+    ]
   },
   {
-    "type": "import",
-    "originType": "ImportSpecifier",
-    "name": "util2",
-    "originalName": "util2",
-    "position": [
-      28,
-      33
-    ],
-    "code": "util2",
-    "filePath": "./utils"
-  },
-  {
-    "type": "import",
-    "originType": "ImportSpecifier",
-    "name": "useState",
-    "originalName": "useState",
-    "position": [
-      60,
-      68
-    ],
-    "code": "useState",
-    "filePath": "react"
-  },
-  {
-    "type": "import",
-    "originType": "ImportDefaultSpecifier",
-    "name": "axios",
-    "position": [
-      92,
-      97
-    ],
-    "code": "axios",
-    "filePath": "axios"
-  },
-  {
-    "type": "local",
-    "originType": "FunctionDeclaration",
     "name": "MyComponent",
+    "type": "local",
+    "originalName": "MyComponent",
+    "filePath": "",
+    "originType": "FunctionDeclaration",
     "position": [
-      113,
-      411
-    ],
-    "code": "export function MyComponent() {\n  const [data, setData] = useState(null);\n\n  const fetchData = async () => {\n    const result = await axios.get('/api/data');\n    setData(result.data);\n  };\n\n  const handleClick = () => {\n    console.log('Clicked');\n    fetchData();\n  };\n\n  return { handleClick };\n}",
-    "filePath": ""
+      166,
+      457
+    ]
   },
   {
-    "type": "local",
-    "originType": "VariableDeclarator",
     "name": "a",
+    "type": "local",
+    "originalName": "a",
+    "filePath": "",
+    "originType": "VariableDeclarator",
     "position": [
-      413,
-      440
-    ],
-    "code": "export const a = axios.get;",
-    "filePath": ""
+      472,
+      485
+    ]
   },
   {
-    "type": "local",
-    "originType": "ClassDeclaration",
     "name": "A",
+    "type": "local",
+    "originalName": "A",
+    "filePath": "",
+    "originType": "ClassDeclaration",
     "position": [
-      441,
-      492
-    ],
-    "code": "export class A {constructor() {} abc() {return a;}}",
-    "filePath": ""
+      501,
+      579
+    ]
   },
   {
+    "name": "default",
     "type": "local",
-    "originType": "ClassDeclaration",
-    "name": "B",
+    "originalName": "a",
+    "filePath": "",
+    "originType": "ExportDefaultDeclaration",
     "position": [
-      493,
-      503
-    ],
-    "code": "class B {}",
-    "filePath": ""
+      637,
+      654
+    ]
+  },
+  {
+    "name": "B",
+    "type": "local",
+    "originalName": "B",
+    "filePath": "",
+    "originType": "ExportNamedDeclaration",
+    "position": [
+      692,
+      714
+    ]
+  },
+  {
+    "name": "B1",
+    "type": "local",
+    "originalName": "B",
+    "filePath": "",
+    "originType": "ExportNamedDeclaration",
+    "position": [
+      692,
+      714
+    ]
   }
 ]

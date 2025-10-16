@@ -30,11 +30,12 @@ export class A {
   }
 }
 class B {}
+
 type TypeA = {
   a: string;
   b: number;
 };
 
-// export default a;
-export default function Test() {}
+export default a;
+// export default function Test() {}
 export { B, B as B1 };

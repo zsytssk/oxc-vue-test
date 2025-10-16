@@ -23,7 +23,7 @@ export function MyComponent() {
   return { handleClick };
 }
 
-export const a = axios.get;
+export default const a = axios.get;
 export class A {constructor() {} abc() {return a;}}
 class B {}
 `;
